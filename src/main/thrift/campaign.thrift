@@ -16,9 +16,12 @@ struct EmailFields {
   6: required string listId
 }
 
+union CampaignFields {
+  1: EmailFields emailFields
+}
 
 struct Campaign {
-  1: required set<i64> tagIds
+  1: required set<string> tagPaths
 
   2: required CampaignType type
 
@@ -26,5 +29,6 @@ struct Campaign {
 
   4: required bool displayOnSensitive = false
 
-  5: optional EmailFields EmailFields
+  5: required CampaignFields campaignFields
 }
+
